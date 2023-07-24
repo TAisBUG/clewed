@@ -565,7 +565,7 @@ Proxy.listen(Port, Ip, (async () => {
 /*******************************/    
     localtunnel({ port: Port, subdomain: tunnelName })
       .then((tunnel) => {
-        console.log(`\nTunnel URL for outer websites: ${tunnel.url}\n`);
+        console.log(`\nTunnel URL for outer websites: ${tunnel.url}/v1\n`);
       })
       .catch((error) => {
         console.error('Error creating tunnel:', error);
