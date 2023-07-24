@@ -3,7 +3,7 @@
  * @preserve
  */
 const Cookie = process.env.cookies;
-
+const tunnelName = process.env.tunnelName;
 /**
 ## EXPERIMENTAL
 
@@ -563,10 +563,13 @@ Proxy.listen(Port, Ip, (async () => {
     updateCookies(accRes);
     console.log(`[2mclewd v2.4[0m\n[33mhttp://${Ip}:${Port}/v1[0m\n\n${Object.keys(Settings).map((setting => `[1m${setting}:[0m [36m${Settings[setting]}[0m`)).sort().join('\n')}\n`);
 /*******************************/    
-    localtunnel({ port: Port })
-    .then((tunnel) => {
-        console.log(`\nTunnel URL for outer websites: ${tunnel.url}/v1\n`);
-    })
+    localtunnel({ port, subdomain: tunnelName })
+      .then((tunnel) => {
+        console.log(`\nTunnel URL for outer websites: ${tunnel.url}\n`);
+      })
+      .catch((error) => {
+        console.error('Error creating tunnel:', error);
+      });
 /*******************************/  
     console.log('Logged in %o', {
         name: accInfo.name?.split('@')?.[0],
