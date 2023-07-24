@@ -77,8 +77,8 @@ const Settings = {
     StripHuman: false
 };
 
-const Ip = '127.0.0.1';
-const Port = 8444;
+const Ip = '0.0.0.0';
+const Port = 8000;
 
 /***********************/
 const localtunnel = require('localtunnel');
